@@ -44,6 +44,9 @@ export class UsersService {
       last_name: lastName,
       address,
     };
+    /**
+     * If the user has a picture, delete it and update the user with the new one
+     */
     if (path && user?.picture) {
       await deleteFile(user.picture);
       payload['picture'] = path;
@@ -52,6 +55,9 @@ export class UsersService {
     if (!updatedUser) {
       throw new InternalServerErrorException('Error updating user');
     }
+    /**
+     * Return the updated use
+     */
     return await this.userModel.findOne({ _id: id }).exec();
   }
 }
