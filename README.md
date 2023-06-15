@@ -30,3 +30,5 @@ compose-up --build
 ```
 
 3 - Endpoints and documentation is available at: <http://localhost:3000/docs>
+
+4 - All endpoints need to send basic authentication with the credentials you provided
