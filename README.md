@@ -16,7 +16,17 @@ A new company needs to address these requirements:
 
 ## Instructions
 
-1 - Run command the next in the console:
-```compose-up --build```
+1 -  Create an .env file with 2 variables
 
-2 - Endpoints are
+``` text
+BASIC_USERNAME=INSERT_YOUR_USER
+BASIC_PASSWORD=INSERT_YOUR_PASSWORD
+```
+
+2 - Run command the next in the console (make sure you have installed docker and docker compose)
+
+``` bash
+compose-up --build
+```
+
+3 - Endpoints and documentation is available at: <http://localhost:3000/docs>
