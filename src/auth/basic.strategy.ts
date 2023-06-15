@@ -16,7 +16,7 @@ export class BasicStrategy extends PassportStrategy(Strategy, 'basic') {
     });
   }
 
-  public validate = async (req, username, password): Promise<boolean> => {
+  public validate = async (_req, username, password): Promise<boolean> => {
     const credentials = this.configService.get<BasicDto>('basic');
     if (credentials.user === username && credentials.password === password) {
       return true;
