@@ -7,7 +7,7 @@ import {
 export class MongooseConfigService implements MongooseOptionsFactory {
   createMongooseOptions(): MongooseModuleOptions {
     return {
-      uri: `mongodb://localhost:27017/sample_db`,
+      uri: `mongodb://mongodb:27017/sample_db`,
     };
   }
 }
