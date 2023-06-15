@@ -17,8 +17,11 @@ import { Express } from 'express';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { v4 } from 'uuid';
+import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { User } from './schemas/user.schema';
 
 @Controller('users')
+@ApiTags('Users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
@@ -32,18 +35,19 @@ export class UsersController {
       }),
     }),
   )
+  @ApiOkResponse({ type: User })
   create(
     @UploadedFile() file: Express.Multer.File,
     @Body() createUserDto: CreateUserDto,
-  ) {
+  ): Promise<User> {
     const path = file?.filename ? `files/${file.filename}` : null;
-    console.log(path);
     return this.usersService.create(createUserDto, path);
   }
 
   @Get()
   @UseGuards(BasicAuthGuard)
-  findAll() {
+  @ApiOkResponse({ type: User, isArray: true })
+  findAll(): Promise<User[]> {
     return this.usersService.findAll();
   }
 
@@ -57,11 +61,12 @@ export class UsersController {
       }),
     }),
   )
+  @ApiOkResponse({ type: User })
   update(
     @Param('id') id: string,
     @Body() updateUserDto: UpdateUserDto,
     @UploadedFile() file: Express.Multer.File,
-  ) {
+  ): Promise<User> {
     const path = file?.filename ? `files/${file.filename}` : null;
     return this.usersService.update(id, updateUserDto, path);
   }
