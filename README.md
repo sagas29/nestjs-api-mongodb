@@ -1,6 +1,6 @@
 # Project
 
-Nest JS api with mongo DB crud
+Nest JS api with mongo DB crud dockerize
 
 ## Specifications
 
@@ -14,7 +14,7 @@ A new company needs to address these requirements:
 - Update user.
 - Star point: Dockerize MongoDB and the Node API, solved with Nest.js
 
-## Instructions
+## Instructions to run the project
 
 1 -  Create an .env file with 2 variables
 
